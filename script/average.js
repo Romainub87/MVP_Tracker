@@ -12,7 +12,6 @@ d3.json('../data/data.json').then(data => {
 
     update(startYear, endYear);
 
-
     function update(startYearSelected, endYearSelected) {
 
         const validData = data.filter(player => player.year >= startYear && player.year <= endYear && Object.keys(stats).every(statKey => player[statKey] != null));
@@ -22,10 +21,9 @@ d3.json('../data/data.json').then(data => {
             return acc;
         }, {});
 
-        // suppriemr le graphique précédent
-        let svg = d3.select('svg').remove();
+        d3.select('svg').remove();
 
-        svg = d3.select('#chart').append('svg')
+        const svg = d3.select('#chart').append('svg')
             .attr('width', 500)
             .attr('height', 500);
 
@@ -47,14 +45,24 @@ d3.json('../data/data.json').then(data => {
         // Background arc
         arcs.append('path')
             .attr('d', arcGenerator)
-            .attr('fill', '#d3d3d3');
+            .attr('fill', '#d3d3d3')
+            .attr('d', arcGenerator.cornerRadius(10))
+            .transition()
+            .duration(1000)
+            .attrTween('d', function(d) {
+                const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, { startAngle: 0, endAngle: (100 / 100) * 2 * Math.PI });
+                return function(t) {
+                    return arcGenerator(interpolate(t));
+                };
+            });
 
         // Foreground arc
         arcs.append('path')
             .attr('d', arcGenerator)
             .attr('fill', (d, i) => color(i))
+            .attr('d', arcGenerator.cornerRadius(10))
             .transition()
-            .duration(1000)
+            .duration(2000)
             .attrTween('d', function(d) {
                 const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, { startAngle: 0, endAngle: (d.data.value / 100) * 2 * Math.PI });
                 return function(t) {
@@ -62,25 +70,29 @@ d3.json('../data/data.json').then(data => {
                 };
             });
 
-        // Statistic name above the circle
         svg.append('text')
             .attr('transform', 'translate(250, 120)') // Position above the center
             .attr('dy', '0.35em')
             .attr('text-anchor', 'middle')
             .attr('font-size', '18px')
             .attr('font-weight', 'bold')
-            .text(stats['FG%']);
+            .style('opacity', 0)
+            .text(stats['FG%'])
+            .transition()
+            .duration(1000)
+            .style('opacity', 1);
 
-        // Statistic value in the center
         svg.append('text')
             .attr('transform', 'translate(250, 250)')
             .attr('dy', '0.35em')
             .attr('text-anchor', 'middle')
             .attr('font-size', '24px')
             .attr('font-weight', 'bold')
-            .text(`${averages['FG%'].toFixed(2)}%`);
-
-        console.log(startYearSelected, endYearSelected, startYear, endYear);
+            .style('opacity', 0)
+            .text(`${averages['FG%'].toFixed(2)}%`)
+            .transition()
+            .duration(1000)
+            .style('opacity', 1);
 
         $( function() {
             let delayTimeout;
@@ -98,6 +110,10 @@ d3.json('../data/data.json').then(data => {
                         $( "#anneeLabel" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ]);
                     }, 500); // Délai en millisecondes
                 }
+            }).css({
+                'border': '1px solid #999',
+                'border-radius': '10px',
+                'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.2)'
             });
 
             $( "#anneeLabel" ).val($( "#intervalleAnnee" ).slider("values", 0) + " - " + $( "#intervalleAnnee" ).slider("values", 1));
