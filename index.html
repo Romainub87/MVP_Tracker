@@ -3,11 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link href="dist/tailwind.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <title>D3.js Project</title>
 </head>
 <body>
 <div id="chart"></div>
+<div>
+  <div style="width: 70%; margin: auto" id="intervalleAnnee" class="d-flex flex-column justify-content-center align-items-center">
+    <div id="slider"></div>
+  </div>
+  <p style="width: 100%; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center">
+    <label for="anneeLabel">Intervalle d'année:</label>
+    <input type="text" id="anneeLabel" readonly="" style="text-align: center; width: min-content; border:0; font-weight:bold;">
+  </p>
+</div>
+
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="bundle.js"></script>
+<script src="average.bundle.js"></script>
 </body>
 </html>
