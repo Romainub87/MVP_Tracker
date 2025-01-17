@@ -1,5 +1,5 @@
-
 // Load JSON data from the data directory
+
 d3.json('data/data.json').then(data => {
     const mvpData = data;
 
@@ -40,7 +40,7 @@ d3.json('data/data.json').then(data => {
         .data(data_ready)
         .join('path')
         .attr('d', arc)
-        .attr('fill', d => color(d.data.label))
+        .attr('fill', d => color(d.data.label));
 
     svg.selectAll('text')
         .data(data_ready)
@@ -49,6 +49,13 @@ d3.json('data/data.json').then(data => {
         .attr('transform', d => `translate(${arc.centroid(d)})`)
         .style('text-anchor', 'middle')
         .style('font-size', '14px');
+
+    // Select the div element
+    const container = d3.select('#chart');
+
+    // Append the data as text
+    container.append('pre')
+        .text(JSON.stringify(data, null, 2));
 }).catch(error => {
     console.error('Error loading the JSON data:', error);
 });
