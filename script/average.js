@@ -22,7 +22,7 @@ d3.json('../data/data.json').then(data => {
 
         const svg = d3.select(statKey.includes('%') ? '#chart' : '#subcharts').append('svg')
             .attr('width', statKey.includes('%') ? 400 : 250)
-            .attr('height', statKey.includes('%') ? 400 : 150) // Changed height to 200 for consistency
+            .attr('height', statKey.includes('%') ? 400 : 100) // Changed height to 200 for consistency
             .attr('viewBox', statKey.includes('%') ? '0 0 400 400' : '0 0 200 200')
             .attr('preserveAspectRatio', 'xMidYMid meet');
 
@@ -49,9 +49,9 @@ d3.json('../data/data.json').then(data => {
 
         if (!statKey.includes('%')) {
             svg.append('text')
-                .attr('transform', 'translate(100, 30)')
+                .attr('transform', 'translate(100, 50)')
                 .attr('text-anchor', 'middle')
-                .attr('font-size', '40px')
+                .attr('font-size', '50px')
                 .style('opacity', 0)
                 .text(`${average.toFixed(2)}`)
                 .transition()
@@ -59,10 +59,10 @@ d3.json('../data/data.json').then(data => {
                 .style('opacity', 1);
 
             svg.append('text')
-                .attr('transform', 'translate(100, 30)')
+                .attr('transform', 'translate(100, 50)')
                 .attr('dy', '1.5em')
                 .attr('text-anchor', 'middle')
-                .attr('font-size', '30px')
+                .attr('font-size', '40px')
                 .style('opacity', 0)
                 .text(stats[statKey])
                 .transition()
@@ -146,6 +146,7 @@ d3.json('../data/data.json').then(data => {
                 values: [ startYearSelected, endYearSelected ],
                 slide: function( event, ui ) {
                     clearTimeout(delayTimeout);
+                    console.log(ui.values);
                     delayTimeout = setTimeout(function() {
                         startYear = ui.values[ 0 ];
                         endYear = ui.values[ 1 ];
@@ -156,7 +157,7 @@ d3.json('../data/data.json').then(data => {
                             }
                         });
                         $( "#anneeLabel" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ]);
-                    }, 500); // Délai en millisecondes
+                    }, 500);
                 }
             }).css({
                 'border': '1px solid #999',

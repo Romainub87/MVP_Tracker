@@ -10,12 +10,18 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <title>D3.js Project</title>
 </head>
-<body>
-<img src="assets/mvp_tracker_logo.png" alt="logo" class="mx-auto w-32 my-0" >
-<div id="charts-section" class="flex flex-col items-center justify-center bg-gray-100 rounded-lg p-5 shadow-[0_4px_8px_rgba(0,0,0,0.2)] w-3/5 mx-auto">
-  <div id="chart"></div>
-  <div id="subcharts" class="flex flex-wrap justify-center"></div>
+<body class="h-screen max-h-screen">
+<img src="assets/mvp_tracker_logo.png" alt="logo" class="mx-auto w-40" >
+<div class="flex flex-wrap justify-center items-center w-full lg:h-2/3">
+  <div id="charts-section" class="flex flex-col mx-10 my-0 items-center justify-center bg-gray-100 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)] lg:w-1/3 w-auto h-full">
+    <div id="chart" class="flex flex-col items-center"></div>
+    <div id="subcharts" class="flex flex-wrap justify-center"></div>
+  </div>
+  <div id="camembert-section" class="flex flex-col mx-10 items-center justify-center bg-gray-100 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)] lg:w-1/3 w-auto h-full">
+    <div id="camembert"></div>
+  </div>
 </div>
+
 <div class="mt-10">
   <div style="width: 70%; margin: auto" id="intervalleAnnee" class="d-flex flex-column justify-content-center align-items-center">
     <div id="slider"></div>
@@ -27,33 +33,8 @@
 </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="camembert.js"></script>
 <script src="average.js"></script>
-<body class="bg-gray-100 min-h-screen flex flex-col">
 
-  <!-- Header avec logo centré et fond transparent -->
-  <header class="w-full bg-transparent py-4 flex justify-center">
-    <img id="logo" src="image/logo.png" alt="MVP Tracker Logo" class="max-w-[200px]">
-  </header>
-
-  <!-- Contenu principal -->
-  <main class="flex flex-col items-center w-full max-w-screen-xl mx-auto mt-8">
-    <!-- Conteneur des deux graphiques bien écartés -->
-    <div id="charts-container" class="w-full flex justify-between gap-20">
-      
-      <!-- Graphique Camembert (Aligné à gauche) -->
-      <div id="camembert" class="bg-white shadow-md rounded-lg p-5 w-1/2 max-w-[600px] pl-10 overflow-hidden">
-        <!-- D3.js insérera son contenu ici -->
-      </div>
-
-      <!-- Deuxième Graphique (Aligné à droite) -->
-      <div id="chart-right" class="bg-white shadow-md rounded-lg p-5 w-1/2 max-w-[600px] pr-10 overflow-hidden">
-        <!-- D3.js insérera son contenu ici -->
-      </div>
-    </div>
-  </main>
-
-  <!-- Scripts -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="bundle.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ module.exports = {
     mode: 'development',
     entry: {
         average: './script/average.js',
+        camembert: './script/camembert.js',
     },
     output: {
         filename: '[name].js',
