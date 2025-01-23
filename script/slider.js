@@ -28,8 +28,6 @@ d3.json('data/data.json').then(data => {
                 delayTimeout = setTimeout(function() {
                     startYear = ui.values[0];
                     endYear = ui.values[1];
-                    d3.select('#subcharts').selectAll('svg').remove();
-                    d3.select('#chart').selectAll('svg').remove();
                     updateCharts(startYear, endYear, data, stats);
                     $("#anneeLabel").val(ui.values[0] + " - " + ui.values[1]);
                 }, 500);

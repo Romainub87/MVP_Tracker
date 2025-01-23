@@ -9,6 +9,14 @@
   <link href="dist/tailwind.css" rel="stylesheet">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <title>MVP Tracker</title>
+  <style>
+    body {
+      background-image: url('assets/background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+  </style>
 </head>
 <body class="h-screen max-h-screen">
 <img src="assets/mvp_tracker_logo.png" alt="logo" class="mx-auto w-40" >
@@ -28,7 +36,7 @@
   </div>
   <p class="w-full text-center flex flex-col justify-center items-center my-3 text-3xl">
     <label for="anneeLabel" class="text-center" hidden>Année</label>
-    <input type="text" id="anneeLabel" readonly class="text-center w-min border-0">
+    <input type="text" id="anneeLabel" readonly class="text-center w-min border-0 rounded-full outline-none focus:ring-none py-2">
   </p>
 </div>
 

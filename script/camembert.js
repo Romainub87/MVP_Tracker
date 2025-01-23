@@ -5,12 +5,6 @@ export function createCamembert(startYearSelected, endYearSelected, data) {
     const championshipWins = mvpData.filter(d => d.teamWonChampionship).length;
     const noChampionshipWins = totalTeams - championshipWins;
 
-    console.log('startYearSelected', startYearSelected);
-    console.log('endYearSelected', endYearSelected);
-    console.log('totalTeams', totalTeams);
-    console.log('championshipWins', championshipWins);
-    console.log('noChampionshipWins', noChampionshipWins);
-
     const dataset = [
         { label: "Victoire avec MVP", value: championshipWins },
         { label: "Défaite avec MVP", value: noChampionshipWins },
