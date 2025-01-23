@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: 'Chewy', cursive;
+}
+
 .ui-slider .ui-slider-range {
-    background: linear-gradient(to right, #00f, #fff, #f00 );
+    background: linear-gradient(to right, #00f, #fff, #f00 ) !important;
 }
 
 .ui-slider .ui-slider-handle:nth-last-child(2) {

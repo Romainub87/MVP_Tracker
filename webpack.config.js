@@ -6,7 +6,7 @@ module.exports = {
         average: './script/average.js',
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname),
         clean: true,
     },
