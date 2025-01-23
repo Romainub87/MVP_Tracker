@@ -36,14 +36,16 @@ export function updateAverageChart(startYearSelected, endYearSelected, statKey, 
     }
 
     if (!statKey.includes('%')) {
-        let text = svg.select('text.average');
+        let text = svg.select('text.average-' + statKey);
         if (text.empty()) {
             text = svg.append('text')
-                .attr('class', 'average')
+                .attr('class', 'average average-' + statKey)
                 .attr('transform', 'translate(100, 60)')
                 .attr('text-anchor', 'middle')
                 .attr('font-size', '4.5em')
                 .style('opacity', 0);
+        } else {
+            text.selectAll('tspan').remove();
         }
         text.transition()
             .duration(1000)
@@ -116,7 +118,7 @@ export function updateAverageChart(startYearSelected, endYearSelected, statKey, 
             .attr('class', 'arcForeground')
             .attr('transform', 'translate(200, 200)')
             .append('path')
-            .attr('d', arcGenerator.cornerRadius(10))
+            .attr('d', arcGenerator.cornerRadius(20))
             .attr('fill', 'url(#gradient)')
             .merge(arcs.select('.arcForeground path'));
 
