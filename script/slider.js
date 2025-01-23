@@ -1,13 +1,14 @@
 import { updateCharts } from "./updateCharts";
 
+export const stats = {
+    'FG%': 'Pourcentage de tirs réussis',
+    'PPG': 'Points par match',
+    'RPG': 'Rebonds par match',
+    'APG': 'Passes décisives par match',
+    'BLKPG': 'Contres par match',
+};
+
 d3.json('data/data.json').then(data => {
-    const stats = {
-        'FG%': 'Pourcentage de tirs réussis',
-        'PPG': 'Points par match',
-        'RPG': 'Rebonds par match',
-        'APG': 'Passes décisives par match',
-        'BLKPG': 'Contres par match',
-    };
 
     let filteredData = data.filter(d => d.year && d.PPG !== null);
     let startYear = Math.min(...filteredData.map(d => d.year));

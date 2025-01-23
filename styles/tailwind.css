@@ -8,6 +8,12 @@ body {
     font-family: 'Chewy', cursive;
 }
 
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 .ui-slider .ui-slider-range {
     background: linear-gradient(to right, #00f, #fff, #f00 ) !important;
 }
