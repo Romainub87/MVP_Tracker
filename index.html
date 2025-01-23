@@ -28,5 +28,75 @@
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="average.js"></script>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Header avec logo centré et fond transparent -->
+  <header class="w-full bg-transparent py-4 flex justify-center">
+    <img id="logo" src="image/logo.png" alt="MVP Tracker Logo" class="max-w-[200px]">
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="flex flex-col items-center w-full max-w-screen-xl mx-auto mt-8">
+    <!-- Conteneur des deux graphiques bien écartés -->
+    <div id="charts-container" class="w-full flex justify-between gap-20">
+
+      <!-- Premier Graphique (Aligné à gauche) -->
+      <div id="chart-left" class="bg-white shadow-md rounded-lg p-5 w-1/2 max-w-[600px] pl-10 overflow-hidden">
+        <!-- D3.js insérera son contenu ici -->
+      </div>
+
+      <!-- Deuxième Graphique (Aligné à droite) -->
+      <div id="chart-right" class="bg-white shadow-md rounded-lg p-5 w-1/2 max-w-[600px] pr-10 overflow-hidden">
+        <!-- D3.js insérera son contenu ici -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    // Vérification du chargement de D3.js
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.d3) {
+        console.error("D3.js n'a pas pu être chargé.");
+      }
+    });
+
+    // Initialisation des dimensions
+    const width = 600;
+    const height = 400;
+
+    // Premier Graphique (gauche)
+    const svgLeft = d3.select("#chart-left")
+      .append("svg")
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .classed("w-full", true);
+
+    // Ajout d'un cercle au premier graphique pour test
+    svgLeft.append("circle")
+      .attr("cx", width / 4)
+      .attr("cy", height / 2)
+      .attr("r", 50)
+      .attr("fill", "steelblue");
+
+    // Deuxième Graphique (droite)
+    const svgRight = d3.select("#chart-right")
+      .append("svg")
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .classed("w-full", true);
+
+    // Ajout d'un rectangle au deuxième graphique pour test
+    svgRight.append("rect")
+      .attr("x", width / 2)
+      .attr("y", height / 4)
+      .attr("width", 100)
+      .attr("height", 100)
+      .attr("fill", "tomato");
+  </script>
+  <script src="bundle.js"></script>
+
 </body>
 </html>
