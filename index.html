@@ -3,30 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="icon" href="assets/mvp_tracker_logo.png" type="image/x-icon">
   <link href="dist/tailwind.css" rel="stylesheet">
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <title>D3.js Project</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <title>MVP Tracker</title>
 </head>
-<body>
-<img src="assets/mvp_tracker_logo.png" alt="logo" class="mx-auto w-32 my-0" >
-<div id="charts-section" class="flex flex-col items-center justify-center bg-gray-100 rounded-lg p-5 shadow-[0_4px_8px_rgba(0,0,0,0.2)] w-3/5 mx-auto">
-  <div id="chart"></div>
-  <div id="subcharts" class="flex flex-wrap justify-center"></div>
+<body class="h-screen max-h-screen">
+<img src="assets/mvp_tracker_logo.png" alt="logo" class="mx-auto w-40" >
+<div class="flex flex-wrap justify-center items-center w-full lg:h-2/3">
+  <div id="charts-section" class="flex flex-col mx-10 my-0 items-center justify-center bg-gray-100 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)] lg:w-1/3 w-auto h-full">
+    <div id="chart" class="flex flex-col items-center"></div>
+    <div id="subcharts" class="flex flex-wrap justify-center"></div>
+  </div>
+  <div id="camembert-section" class="flex flex-col mx-10 items-center justify-center bg-gray-100 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)] lg:w-1/3 w-auto h-full">
+    <div id="camembert"></div>
+  </div>
 </div>
+
 <div class="mt-10">
   <div style="width: 70%; margin: auto" id="intervalleAnnee" class="d-flex flex-column justify-content-center align-items-center">
     <div id="slider"></div>
   </div>
-  <p class="w-full text-center flex flex-col justify-center items-center my-3 text-xl">
-    <label for="anneeLabel">Intervalle d'année:</label>
+  <p class="w-full text-center flex flex-col justify-center items-center my-3 text-3xl">
+    <label for="anneeLabel" class="text-center" hidden>Année</label>
     <input type="text" id="anneeLabel" readonly class="text-center w-min border-0">
   </p>
 </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="average.js"></script>
+<script src="script/slider.js"></script>
+
 </body>
 </html>

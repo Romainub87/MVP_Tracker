@@ -3,10 +3,10 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     entry: {
-        average: './script/average.js',
+        slider: './script/slider.js',
     },
     output: {
-        filename: '[name].js',
+        filename: 'script/[name].js',
         path: path.resolve(__dirname),
         clean: true,
     },
